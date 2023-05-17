@@ -1030,6 +1030,7 @@ Config.ui.stowBarInitially = true; // have the UI bar start initially stowed
                 .ariaClick({ label : 'Reset all swappable elements.' }, function (ev) {
                     ev.preventDefault();
                     reset();
+                    state.display(state.active.title, null, "back")
                 })
                 .appendTo(this.output);
         }
@@ -1320,7 +1321,7 @@ You hesitate and the cat starts hissing: &quot;starting a new project! What is i
     	&lt;&lt;if _checkedC&gt;&gt;
 		&lt;&lt;set _textC = &quot;@@.green;There are many ways to document your code. This may require some more work later...@@&quot;&gt;&gt;
 	&lt;&lt;else&gt;&gt;
-		&lt;&lt;set _textC = &quot;&quot;&gt;&gt;
+		&lt;&lt;set _textC = &quot;@@.red;Are you sure? Documentation makes the code easier to maintain and update@@&quot;&gt;&gt;
 	&lt;&lt;/if&gt;&gt;
 	&lt;&lt;replace &quot;#textC&quot;&gt;&gt;
 	&lt;&lt;print _textC&gt;&gt;&lt;&lt;/replace&gt;&gt;
@@ -1369,7 +1370,7 @@ You hesitate and the cat starts hissing: &quot;starting a new project! What is i
 	&lt;&lt;print _continue&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;
 &lt;&lt;if $DocPuzzle&gt;&gt;
-		&lt;&lt;goto &quot;TestingPuzzle&quot;&gt;&gt;
+		&lt;&lt;goto &quot;SharingCode&quot;&gt;&gt;
 &lt;&lt;/if&gt;&gt;
 &lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="7" name="DocumentationPuzzle" tags="" position="999,875" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;set _a = &quot;doc1&quot;, _aa=&quot;53.47&quot;&gt;&gt;
@@ -1713,42 +1714,12 @@ And just as you’re about to submit your materials to the publisher, a frigid b
 
 &lt;&lt;button [[Ready?|LicensePuzzle3]]&gt;&gt;&lt;&lt;/button&gt;&gt;
 
-&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="TestingPuzzle" tags="" position="1150,1025" size="100,100">&quot;So by now, everything is in check, right?&quot;, you ask.
-&quot;The code is versioned and you have done everything and more to get your software in shape.&quot;
-
-You keep on rambling, more to yourself than the cat...
-
-&quot;There shouldn&#39;t be any mistakes, right, right? I might not have had the nicest code managing going on, but I know how to write it, &lt;&lt;linkappend &quot;right?&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;The cat ROARS! &quot;What about all time you have to spent on debugging and maintenance and fixing inefficient code designs [[and...|TestingPuzzle1]]&quot;&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="TestingPuzzle1" tags="" position="1150,1150" size="100,100">&lt;&lt;nobr&gt;&gt;
-	&lt;&lt;timed 2s&gt;&gt;
-		&lt;&lt;run $(&quot;#OverlayImg2&quot;).show()&gt;&gt;
-		&lt;&lt;timed 0.2s&gt;&gt;
-			&lt;&lt;run $(&quot;#OverlayImg2&quot;).hide()&gt;&gt;
-		&lt;&lt;/timed&gt;&gt;
-	&lt;&lt;/timed&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;&lt;div id=&quot;OverlayImg2&quot;&gt;&lt;/div&gt;
-&quot;You have to write tests, TESTS I say!!!&quot;, the cat continues
-
-&quot;What are tests&quot;, you quietly ask, scared that this will open a whole new pandoras box of work.
-
-&quot;Everything will be made easier if you write tests for your code!!&quot;
-
-&quot;For example, normally you have to plough through old code and try to work out what it is supposed to be doing, right. To make sure everything is still as it should be, right?
-
-And every time you make a change to a piece of code, how can you be soundly &lt;&lt;linkappend &quot;asleep&quot;&gt;&gt; if you are not 100% sure that this change has not broken something&lt;&lt;/linkappend&gt;&gt;?
-
-This can be made efficient, you&#39;re wasting so much [[time|TestingPuzzle2]].&quot;</tw-passagedata><tw-passagedata pid="20" name="TestingPuzzle2" tags="" position="1300,1175" size="100,100">&quot;Alright, let&#39;s just have a go at it&quot;, you think. &quot;Hopefully the cat will be a bit kinder after you write those tests.&quot;
-
-An important part of your program depends on one critical piece of code:
-&lt;code&gt;
-add(a, b) { return a + b; }
-&lt;/code&gt;
-
-But you know the cat can change the code, so that it ends up doing something else. But you are smarter than it and you will shield yourself by writing a [[unit test|TestingPuzzle3]]! </tw-passagedata><tw-passagedata pid="21" name="DocumentationPuzzleSolution" tags="" position="1000,1000" size="100,100">&quot;Well isn&#39;t this ironic...&quot; the cat snickers
+&lt;&lt;/linkappend&gt;&gt;</tw-passagedata><tw-passagedata pid="18" name="DocumentationPuzzleSolution" tags="" position="1000,1000" size="100,100">&quot;Well isn&#39;t this ironic...&quot; the cat snickers
 &quot;So, apparently the how-to-guide was already in the right order, woeps. You didn&#39;t even need to fix those instructions&quot;
 
 Clearly, documentation can be hard to follow, even if it is correct already.
 
-But you &lt;&lt;link &quot;made it&quot; &quot;ProjectStructure&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="LicensePuzzle3" tags="" position="1300,1899" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
+But you &lt;&lt;link &quot;made it&quot; &quot;ProjectStructure&quot;&gt;&gt;&lt;&lt;/link&gt;&gt;</tw-passagedata><tw-passagedata pid="19" name="LicensePuzzle3" tags="" position="1300,1899" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
 “Now make your choice, foolish human!” screeches the cat.
 
 * &lt;label&gt;&lt;&lt;radiobutton &quot;$license&quot; &quot;CC BY&quot; autocheck&gt;&gt; CC BY?&lt;/label&gt;
@@ -1770,7 +1741,7 @@ But you &lt;&lt;link &quot;made it&quot; &quot;ProjectStructure&quot;&gt;&gt;&lt
     &lt;&lt;replace &quot;#continue&quot;&gt;&gt;
 	&lt;&lt;print _continue&gt;&gt;&lt;&lt;/replace&gt;&gt;
 &lt;&lt;/link&gt;&gt;
-&lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="23" name="ZenodoPuzzle" tags="" position="900,1500" size="100,100">The clock is ticking down - luckily digitally and silent in the background. You feel close to victory, YOU ARE ALMOST THERE! All you need to do is quickly wrap up the project and ship it.
+&lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="20" name="ZenodoPuzzle" tags="" position="900,1500" size="100,100">The clock is ticking down - luckily digitally and silent in the background. You feel close to victory, YOU ARE ALMOST THERE! All you need to do is quickly wrap up the project and ship it.
 
 If only you were not so tired. The brightness of the screen starts to feel harsh in your eyes.
 
@@ -1781,7 +1752,7 @@ If only you were not so tired. The brightness of the screen starts to feel harsh
 You blink irritated as the black cat&#39;s paw points to your &lt;b&gt;Google Drive&lt;/b&gt; tab in the browser. Can it be that easy?
 
 You zip your code and upload it on your [[Google Drive|ZenodoPuzzleA]].
-&lt;img @src=&quot;setup.ImagePath+&#39;zenodocat.jpg&#39;&quot; class=&quot;center&quot;&gt;</tw-passagedata><tw-passagedata pid="24" name="LicensePuzzle4" tags="" position="1300,2025" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
+&lt;img @src=&quot;setup.ImagePath+&#39;zenodocat.jpg&#39;&quot; class=&quot;center&quot;&gt;</tw-passagedata><tw-passagedata pid="21" name="LicensePuzzle4" tags="" position="1300,2025" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
 $license is an excellent choice for your software! Actually all licenses (except cc by) would have been great, depending on your preferences.
 
 The ice begins to crack and the cat howls. 
@@ -1804,7 +1775,7 @@ But the license has yet to be applied to your research software! You dart to you
 &lt;&lt;/link&gt;&gt;
 &lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;
 
-&lt;&lt;set $LicensePuzzle = true&gt;&gt;</tw-passagedata><tw-passagedata pid="25" name="EndingCredits" tags="" position="878,2210" size="100,100">&lt;video autoplay muted loop id=&quot;myVideo&quot;&gt;
+&lt;&lt;set $LicensePuzzle = true&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="EndingCredits" tags="" position="878,2210" size="100,100">&lt;video autoplay muted loop id=&quot;myVideo&quot;&gt;
   &lt;source @src=&#39;setup.ImagePath + &quot;scarysilhouette.mp4&quot;&#39; type=&quot;video/mp4&quot;&gt;
 &lt;/video&gt;
 &lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;tension_bgm&quot; volume 0.5 play loop&gt;&gt;
@@ -1828,96 +1799,7 @@ The cat cackles, “You are too late. But it is for the best. Join me! Incredibl
 “NOOOOOOOOOOOO!!” yowls the cat.
 
 And for a split second, silence followed by a small computer chime. “[[SUBMISSION RECEIVED|EndingCredits2]].”
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="26" name="TestingPuzzle3" tags="" position="1300,1300" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
-Since your import code &lt;code&gt;add(a, b) { return a + b; } &lt;/code&gt;, you can write a test where you check if the result is as you expect it to be (and no mistakes have &quot;accidentally&quot; occured.
-
-&lt;&lt;nobr&gt;&gt;
-&lt;code&gt;
-TestAdd1() { add(
-&lt;&lt;listbox &quot;_lbanswer1&quot; autoselect&gt;&gt;
-	&lt;&lt;option 0&gt;&gt;
-	&lt;&lt;option 1&gt;&gt;
-	&lt;&lt;option 2&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
-, 
-&lt;&lt;listbox &quot;_lbanswer2&quot; autoselect&gt;&gt;
-	&lt;&lt;option -1&gt;&gt;
-    &lt;&lt;option 1&gt;&gt;
-	&lt;&lt;option 2&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
- EQUALS 
-&lt;&lt;listbox &quot;_lbanswer3&quot; autoselect&gt;&gt;
-	&lt;&lt;option 4&gt;&gt;
-	&lt;&lt;option 6&gt;&gt;
-	&lt;&lt;option 8&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
-) }
-&lt;/code&gt;
-&lt;&lt;/nobr&gt;&gt;
-
-&lt;&lt;link &quot;Is this the right test?&quot;&gt;&gt;
-&lt;&lt;if _lbanswer1 neq 2 or _lbanswer2 neq 2 or _lbanswer3 neq 4&gt;&gt;
-	&lt;&lt;set _continue = &quot;That&#39;s not it. Please make sure that the test is correct, so the addition of the first two values gives the expected correct solution&lt;br&gt;You just lost one of your cat lives.&quot;&gt;&gt;
-    &lt;&lt;set $CurHP = $CurHP-1&gt;&gt;&lt;&lt;run Health($CurHP, $MaxHP, &quot;horizontalhealthbar&quot;, true)&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;goto &quot;TestingPuzzle4&quot;&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-    &lt;&lt;replace &quot;#continue&quot;&gt;&gt;
-	&lt;&lt;print _continue&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;
-&lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;
-</tw-passagedata><tw-passagedata pid="27" name="TestingPuzzle4" tags="" position="1500,1301" size="100,100">&lt;&lt;set _continue = &quot;&quot;&gt;&gt;
-&quot;Prrrrr, you can be prrrrroud of yourself&quot; the cat says with an evil glow in its eyes.
-
-&quot;It seems I am still missing something&quot;, you think to yourself. What if the cat messes up my function &lt;code&gt;add(a, b) { return a + b; } &lt;/code&gt; and changes it from a &quot;plus +&quot; to a &quot;times *&quot; sign. This would break my first test...
-
-Let&#39;s just add another, to make sure this case is taken care of:
-
-  &lt;code&gt;TestAdd1() { add(2, 2) EQUALS 4) }&lt;/code&gt;
-  
-  &lt;&lt;nobr&gt;&gt;
-&lt;code&gt;
-TestAdd2() { add(
-&lt;&lt;listbox &quot;_lbanswer1&quot; autoselect&gt;&gt;
-	&lt;&lt;option 0&gt;&gt;
-	&lt;&lt;option 1&gt;&gt;
-	&lt;&lt;option 2&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
-, 
-&lt;&lt;listbox &quot;_lbanswer2&quot; autoselect&gt;&gt;
-	&lt;&lt;option 1&gt;&gt;
-	&lt;&lt;option 2&gt;&gt;
-	&lt;&lt;option 3&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
- EQUALS 
-&lt;&lt;listbox &quot;_lbanswer3&quot; autoselect&gt;&gt;
-	&lt;&lt;option 2&gt;&gt;
-	&lt;&lt;option 4&gt;&gt;
-	&lt;&lt;option 6&gt;&gt;
-&lt;&lt;/listbox&gt;&gt;
-) }
-&lt;/code&gt;
-&lt;&lt;/nobr&gt;&gt;
-
-&lt;&lt;link &quot;Is this the right test?&quot;&gt;&gt;
-&lt;&lt;if (_lbanswer1 eq 1 and _lbanswer2 eq 1 and _lbanswer3 eq 2) or (_lbanswer1 eq 1 and _lbanswer2 eq 3 and _lbanswer3 eq 4) or (_lbanswer1 eq 0 and _lbanswer2 eq 2 and _lbanswer3 eq 2) &gt;&gt;
-	&lt;&lt;goto &quot;TestingPuzzle5&quot;&gt;&gt;
-&lt;&lt;else&gt;&gt;
-	&lt;&lt;set _continue = &quot;That&#39;s not it. Please make sure that the test is correct, so the addition of the first to values gives the expected correct solution. But the multiplication of them does not.&lt;br&gt;You just lost one of your cat lives.&quot;&gt;&gt;
-    &lt;&lt;set $CurHP = $CurHP-1&gt;&gt;&lt;&lt;run Health($CurHP, $MaxHP, &quot;horizontalhealthbar&quot;, true)&gt;&gt;
-&lt;&lt;/if&gt;&gt;
-    &lt;&lt;replace &quot;#continue&quot;&gt;&gt;
-	&lt;&lt;print _continue&gt;&gt;&lt;&lt;/replace&gt;&gt;
-&lt;&lt;/link&gt;&gt;
-&lt;span id=&quot;continue&quot;&gt;&lt;&lt;print _continue&gt;&gt;&lt;/span&gt;</tw-passagedata><tw-passagedata pid="28" name="TestingPuzzle5" tags="" position="1500,1425" size="100,100">&quot;You might still have missed some things&quot; the cat mentions, but it looks a somewhat less disturbed by your lack of tests. &quot;Don&#39;t get too cocky, mistakes can be easily made.&quot;
-
-&quot;There are many more scenario&#39;s where things can go awry...&quot; that furrball starts.
-
-But you feel a lot more confident, now that you have some tests to inform you if everything is still working as it should.
-
-And even though these first tests that you wrote may look like (and actually are) a bit silly. Remember that code is alive. Something that is a simple function today, can tomorrow become very &lt;&lt;linkappend &quot;complicated&quot;&gt;&gt;&lt;br&gt;&lt;br&gt;An example (true story):&lt;br&gt;a research group had a system that used a query, without any tests. At some point someone changed the query in such a way that it was returning results twice (this was not supposed to happen). The system was then adding up the total of the results -- for a few weeks nobody noticed that the numbers were double of what they should be. Once they noticed, they fixed the query and added some tests. Later on, somebody changed the query again, only this time they spotted the double results straight away and avoided a second crisis.&lt;&lt;/linkappend&gt;&gt;.
-
-Finally, it is time to start [[sharing your code|SharingCode]]</tw-passagedata><tw-passagedata pid="29" name="EndingInfos" tags="" position="750,2361" size="100,100">&lt;img @src=&quot;setup.ImagePath+&#39;horrorVu.png&#39;&quot; style=&quot;display: block; margin: auto; width:60%;float:right;padding:20px&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="23" name="EndingInfos" tags="" position="750,2361" size="100,100">&lt;img @src=&quot;setup.ImagePath+&#39;horrorVu.png&#39;&quot; style=&quot;display: block; margin: auto; width:60%;float:right;padding:20px&quot;&gt;
 This game was created by:
 * Black Cat (Frontiers of Hell)
 * Jaap (guest-starring as evil black cat)
@@ -1941,7 +1823,7 @@ If you would like to learn more about software management and reproducible resea
 *	Reproducible research: https://the-turing-way.netlify.app/welcome
 *	What is software: https://doi.org/10.5281/zenodo.5504016
 *	Testing: https://the-turing-way.netlify.app/reproducible-research/testing/testing-unittest.html
-*	Documentation: https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html</tw-passagedata><tw-passagedata pid="30" name="WidgetTimer" tags="widget nobr" position="950,225" size="100,100">/* &lt;&lt;countdownTimer&gt;&gt; Widget - Start */
+*	Documentation: https://the-turing-way.netlify.app/reproducible-research/reproducible-research.html</tw-passagedata><tw-passagedata pid="24" name="WidgetTimer" tags="widget nobr" position="950,225" size="100,100">/* &lt;&lt;countdownTimer&gt;&gt; Widget - Start */
 &lt;&lt;widget &quot;countdownTimer&quot;&gt;&gt;
 	&lt;&lt;set _seconds = $args[0]&gt;&gt;
 	&lt;&lt;set _minutes = Math.floor(_seconds / 60)&gt;&gt;
@@ -1997,7 +1879,7 @@ If you would like to learn more about software management and reproducible resea
 	}, 200);
 	&lt;&lt;/script&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
-/* &lt;&lt;countdownTimer&gt;&gt; Widget - End */</tw-passagedata><tw-passagedata pid="31" name="TimeUP" tags="" position="620,2245" size="100,100">&lt;&lt;set $timeleft = $timeleft+900&gt;&gt;
+/* &lt;&lt;countdownTimer&gt;&gt; Widget - End */</tw-passagedata><tw-passagedata pid="25" name="TimeUP" tags="" position="620,2245" size="100,100">&lt;&lt;set $timeleft = $timeleft+900&gt;&gt;
 HORA EST!!
 
 Your time is up, muhahhaha.
@@ -2006,7 +1888,7 @@ You have two options:
 
 * Try to redeem yourself and &lt;&lt;return&gt;&gt; where you left off.
 
-* Skip the remaining puzzles and go to the end to see some valuable further [[information|EndingInfos]]</tw-passagedata><tw-passagedata pid="32" name="ZenodoPuzzleA" tags="" position="878,1611" size="100,100">You check the journal&#39;s guidance for authors and editors on how to write a software availability statement:
+* Skip the remaining puzzles and go to the end to see some valuable further [[information|EndingInfos]]</tw-passagedata><tw-passagedata pid="26" name="ZenodoPuzzleA" tags="" position="878,1611" size="100,100">You check the journal&#39;s guidance for authors and editors on how to write a software availability statement:
 
 &lt;section class=&quot;paper&quot;&gt;\
 	&lt;article class=&quot;paperheader&quot;&gt;&lt;/article&gt;\
@@ -2022,7 +1904,7 @@ You have two options:
 Now you only need to insert the URL. But how to make sure the software is accessible? Didn&#39;t your colleague always forget to change the access rights? You check your mailbox to confirm your suspicion, but the link to the document no longer resolves. 
 
 [[Ooooops|ZenodoPuzzleB]]
-</tw-passagedata><tw-passagedata pid="33" name="ZenodoPuzzleB" tags="" position="878,1725" size="100,100">You don&#39;t have any time left to figure out how to share your software in a persistent way with Google Drive.
+</tw-passagedata><tw-passagedata pid="27" name="ZenodoPuzzleB" tags="" position="878,1725" size="100,100">You don&#39;t have any time left to figure out how to share your software in a persistent way with Google Drive.
 
 Better do things right now and publish your software in a proper repository to get a peristent link that does not perish - or you will purrrrish. You feel the itching of growing black fur under your skin already.
 
@@ -2030,7 +1912,7 @@ One of the easiest way to get a peristent link, a &lt;b&gt;PID&lt;/b&gt; (Perist
 
 &lt;img @src=&quot;setup.ImagePath+&#39;zenodo_git.png&#39;&quot; style=&quot;display: block; margin: auto;&quot;&gt;
 
-[[Continue |ZenodoPuzzleC]]</tw-passagedata><tw-passagedata pid="34" name="ZenodoPuzzleC" tags="" position="876,1842" size="100,100">You made it! You published your software on Zenodo and received a peristent identifier in form of a DOI! Awesome software management feels great!
+[[Continue |ZenodoPuzzleC]]</tw-passagedata><tw-passagedata pid="28" name="ZenodoPuzzleC" tags="" position="876,1842" size="100,100">You made it! You published your software on Zenodo and received a peristent identifier in form of a DOI! Awesome software management feels great!
 
 Now you only need to add the DOI to your software availability statement. Can you complete the software availability statement if you want to cite the latest (and only the latest) version of your software?
 
@@ -2064,13 +1946,13 @@ You write:
 &lt;&lt;/button&gt;&gt;
 &lt;span id=&quot;output&quot;&gt;&lt;/span&gt;
 &lt;&lt;set $ZenodoPuzzle = true&gt;&gt;
-</tw-passagedata><tw-passagedata pid="35" name="ZenodoPuzzleD" tags="" position="870,1961" size="100,100">That&#39;s it! https://doi.org/10.5281/zenodo.7241587 is the answer!
+</tw-passagedata><tw-passagedata pid="29" name="ZenodoPuzzleD" tags="" position="870,1961" size="100,100">That&#39;s it! https://doi.org/10.5281/zenodo.7241587 is the answer!
 
 https://zenodo.org/record/7241587 is the URL to the record page, and not a persistent identifier.
 
 https://doi.org/10.5281/zenodo.7241531 is a persistent identifier that points to all versions together, like an umbrella. It&#39;s the concept DOI!
 
-[[Let&#39;s continue|SharingCode]]</tw-passagedata><tw-passagedata pid="36" name="EndingCredits2" tags="" position="875,2325" size="100,100">&lt;video autoplay muted loop id=&quot;myVideo&quot;&gt;
+[[Let&#39;s continue|SharingCode]]</tw-passagedata><tw-passagedata pid="30" name="EndingCredits2" tags="" position="875,2325" size="100,100">&lt;video autoplay muted loop id=&quot;myVideo&quot;&gt;
   &lt;source @src=&#39;setup.ImagePath + &quot;intensestaringcat.mp4&quot;&#39; type=&quot;video/mp4&quot;&gt;
 &lt;/video&gt;
 &lt;&lt;masteraudio stop&gt;&gt;&lt;&lt;audio &quot;end_bgm&quot; volume 0.5 play loop&gt;&gt;
